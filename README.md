@@ -88,7 +88,7 @@ uv sync
 # Install with GPU dependencies (for local GPU evaluation)
 uv sync --extra gpu
 
-# Install with ROCm backend
+# Install with AMD ROCm backend
 uv add torch --index pytorch=https://download.pytorch.org/whl/rocm7.1
 uv sync
 
