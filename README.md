@@ -85,12 +85,11 @@ We have transitioned to using `pyproject.toml` and `uv` for dependency managemen
 # Install base dependencies (works without a local GPU)
 uv sync
 
-# Install with GPU dependencies (for local GPU evaluation)
-uv sync --extra gpu
-
 # Install with AMD ROCm backend
 uv add torch --index pytorch=https://download.pytorch.org/whl/rocm7.1
-uv sync
+
+# Install with GPU dependencies (for local GPU evaluation)
+uv sync --extra gpu
 
 # Run commands with uv (which invoke the right env)
 uv run python scripts/<script_name>.py ...
