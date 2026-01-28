@@ -115,10 +115,9 @@ uv run python scripts/generate_and_eval_single_sample.py dataset_src=huggingface
 ```
 
 **What you might need to modify**
-* **`gpu_arch`** - Depend on your GPU, you might need to adjust the `gpu_arch` argument to reflect your hardware.
+* **`gpu_arch`** - Depend on your GPU, you might need to adjust the `gpu_arch` argument to reflect your hardware. `gpu_arch` currently supported for `hip` backend: `gfx942`, `gfx950`.
 * **`precision`** - You can specify the precision of tensor by `precision=fp32`. Currently all of our reported results are `fp32` but we added support for `fp16` & `bf16`.
-*  **`backend`** - We are also supporting other GPU programming languages beyond `cuda`. Simply specify `backend=triton`. For now we support DSLs: `cuda`, `triton`, `cute`, `tilelang`, `thunderkittens`.
-
+*  **`backend`** - We are also supporting other GPU programming languages beyond `cuda`. For example, simply specify `backend=triton` or `backend=hip`. For now we support DSLs: `cuda`, `hip`, `triton`, `cute`, `tilelang`, `thunderkittens`. 
 
 Note on setting up ThunderKittens (TK) locally: to use `backend=thunderkittens`, you need to git clone the ThunderKittens repo and set the following environment variable to point to your local ThunderKittens directory, `export THUNDERKITTENS_ROOT=<PATH to ThunderKittens folder>`, and all ThunderKitten programs as shown in the [example](src/kernelbench/prompts/model_new_ex_add_thunderkittens.py), should contain `tk_root = os.environ.get("THUNDERKITTENS_ROOT", "/root/ThunderKittens")`, which enable the kernel to include the right TK primitives. In addition, we only support BF16 for TK right now.
 
